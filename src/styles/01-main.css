@@ -1,5 +1,6 @@
 body {
   background-color: white;
+  overflow-x: hidden;
 }
 
 footer {
@@ -10,3 +11,51 @@ footer {
 #logo {
   max-height: 30px;
 }
+
+.article {
+  min-height: 60vh;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  background-position-y: 80%;
+  margin: 0;
+  max-width: 100%;
+}
+
+.article h2{
+  font-size: 50px;
+}
+
+.article h2 a {
+  color: white!important;
+}
+
+.article h2 a:hover {
+  text-decoration: none!important;
+}
+
+#hero1 {
+  background-image: url('/images/athens.jpg');
+}
+
+#hero2 {
+  background-image: url('/images/adam.png');
+   background-position-y: 40%;
+}
+
+#hero3 {
+  
+  background-image: url('/images/monk.jpg');
+  background-position-y: 90%;
+}
+
+#hero4 {
+  background-image: url('/images/caspar.jpg');
+  background-position-y: 40%;
+}
+
+#hero5 {
+  background-image: url('/images/piccolo-lucio.jpg');
+  background-position-y: 15%; 
+}
+

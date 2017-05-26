@@ -3,6 +3,7 @@
 const gulp        = require('gulp');
 const imagemin    = require('gulp-imagemin');
 const pug         = require('gulp-pug');
+const data        = require('gulp-data');
 const uglify      = require('gulp-uglify');
 const cssnano     = require('gulp-cssnano');
 const concatJs    = require('gulp-concat');
@@ -10,6 +11,7 @@ const concatCss   = require('gulp-concat-css');
 const del         = require('del');
 const pngquant    = require('imagemin-pngquant');
 const browserSync = require('browser-sync');
+const contents    = require('./contents');
 
 ['pug', 'css', 'js', 'fonts', 'imagemin'].forEach(taskName => gulp.task(`${taskName}-watch`, [taskName], done => {
   browserSync.reload();
@@ -22,12 +24,13 @@ gulp.task('clean', () => {
 
 gulp.task('pug', () => {
   return gulp.src('./src/views/pages/*.pug')
-  	.pipe(pug())
+    .pipe(data(contents))
+  	.pipe(pug({locals:contents}))
   	.pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('css', () => {
-  return gulp.src(['./src/styles/vendor/*.css', './src/styles/*.css'])
+  return gulp.src(['./src/styles/vendor/*.css','./src/styles/*.css'])
     .pipe(concatCss('styles.css'))
     .pipe(cssnano())
     .pipe(gulp.dest('./dist/styles/'));
@@ -71,6 +74,7 @@ gulp.task('serve', () => {
   browserSync({
     server: './dist',
     baseDir: '/',
+    routes:['/contacts.html', 'sezione1.html'], 
     port: 4000,
     notify: false
   });

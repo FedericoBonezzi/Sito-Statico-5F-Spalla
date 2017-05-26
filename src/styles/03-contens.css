@@ -1,0 +1,15 @@
+.contents {
+ display: inline-flex;
+}
+
+.contents #content {
+ display: inline;
+ min-width: 100%!important;
+ word-break: keep-all;
+}
+
+.contents img {
+ display: inline;
+ max-width: 30%;
+ max-height: 200px;
+}
